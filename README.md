@@ -10,17 +10,17 @@ https://thomas.apestaart.org/thomas/trac/wiki/DAD/Rip).
 
 FEATURES
 --------
-* support for MusicBrainz for metadata lookup
-* support for AccurateRip (V1) verification
-* detects sample read offset and ability to defeat cache of drives
-* performs test and copy rip
-* detects and rips Hidden Track One Audio
-* templates for file and directory naming
-* support for lossless encoding and lossy encoding or re-encoding of images
-* tagging using GStreamer, including embedding MusicBrainz id's
-* retagging of images
-* plugins for logging
-* for now, only a command line client (rip) is shipped
+* Support for MusicBrainz for metadata lookup
+* Support for AccurateRip (V1) verification
+* Detects sample read offset and ability to defeat cache of drives
+* Performs test and copy rip
+* Detects and rips Hidden Track One Audio
+* Templates for file and directory naming
+* Support for lossless encoding and lossy encoding or re-encoding of images
+* Tagging using GStreamer, including embedding MusicBrainz id's
+* Retagging of images
+* Plugins for logging
+* For now, only a command line client (rip) is shipped
 
 REQUIREMENTS
 ------------
@@ -81,21 +81,39 @@ rip is self-documenting.
 rip implements a tree of commands; for example, the top-level 'changelog'
 command has a number of sub-commands.
 
-Positioning of arguments is important;
+Positioning of arguments is important, for example this is correct:
 
     rip cd -d (device) rip
 
-is correct, while
+while the command below is invalid (because the `-d` argument applies to the rip command):
 
     rip cd rip -d (device)
 
-is not, because the `-d` argument applies to the rip command.
-
 Check the man page (rip(1)) for more information.
 
+### Getting started
 
-RUNNING UNINSTALLED
--------------------
+To make accurate rips, first you'll need to detect the CD drive's offset:
+
+1. Pick a relatively popular CD that has a good change of being in the
+   AccurateRip database
+2. Find the drive's offset by running:
+
+        $ rip offset find
+
+3. Wait for it to complete (this might take a while)
+4. Optionally, confirm this offset with two more discs.
+5. Analyze the drive's caching behaviour:
+
+        $ rip drive analyze
+
+Now you  can rip your audio disc(s) by running one of:
+
+    $ rip cd rip  # uses the offset from configuration file
+    $ rip cd rip --offset <the number you got before>  # manually specified offset
+
+
+### Running uninstalled
 
 To make it easier for developers, you can run morituri straight from the
 source checkout:
@@ -104,26 +122,6 @@ source checkout:
     make
     misc/morituri-uninstalled
 
-GETTING STARTED
----------------
-The simplest way to get started making accurate rips is:
-
-- pick a relatively popular CD that has a good change of being in the
-  AccurateRip database
-- find the drive's offset by running
-
-        rip offset find
-
-- wait for it to complete; this might take a while
-- optionally, confirm this offset with two more discs
-- analyze the drive's caching behaviour
-
-        rip drive analyze
-
-- rip the disc by running one of
-
-        rip cd rip  # uses the offset from configuration file
-        rip cd rip --offset (the number you got before)  # manually specified offset
 
 FILING BUGS
 -----------
