@@ -1,12 +1,12 @@
 morituri is a CD ripper aiming for accuracy over speed for UNIX systems.
 Its features are modeled to compare with Exact Audio Copy on Windows.
-The home page is https://thomas.apestaart.org/morituri/trac/
+The home page is https://github.com/thomasvs/morituri/
 
 
 RATIONALE
 ---------
 For a more detailed rationale, see my wiki page ['The Art of the Rip'](
-https://thomas.apestaart.org/thomas/trac/wiki/DAD/Rip).
+https://thomas.apestaart.org/log/?p=873).
 
 FEATURES
 --------
@@ -125,8 +125,8 @@ source checkout:
 
 FILING BUGS
 -----------
-morituri's bug tracker is at [https://thomas.apestaart.org/morituri/trac/](
-https://thomas.apestaart.org/morituri/trac/).
+morituri's bug tracker is at [https://github.com/thomasvs/morituri/issues/](
+https://github.com/thomasvs/morituri/issues/).
 When filing bugs, please run the failing command with the environment variable
 `RIP_DEBUG` set; for example:
 
